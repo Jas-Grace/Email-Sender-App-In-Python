@@ -173,14 +173,13 @@ class Widgets(QWidget):
         file_path = fname[0]
     
     def onclick(self):
+          try:
             global file_path
             email = self.text1.text()
             password = self.text2.text()
             send_to_email = self.text3.text()
             subject = self.text4.text()
             message = self.text5.toPlainText()
-            # all_files = self.text6.text()
-            # files = all_files.split(',')
             
             msg = MIMEMultipart()
             msg['From'] = email
@@ -188,18 +187,6 @@ class Widgets(QWidget):
             msg['Subject'] = subject
 
             msg.attach(MIMEText(message, 'plain'))
-
-            # for file_location in files:
-            #     # Setup the attachment
-            #     filename = os.path.basename(file_location)
-            #     attachment = open(file_location, "rb")
-            #     part = MIMEBase('application', 'octet-stream')
-            #     part.set_payload(attachment.read())
-            #     encoders.encode_base64(part)
-            #     part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-
-            #     # Attach the attachment to the MIMEMultipart object
-            #     msg.attach(part)
 
             # Setup the attachment
             filename = os.path.basename(file_path)
@@ -223,8 +210,8 @@ class Widgets(QWidget):
             self.text4.setText('')
             self.text5.insertPlainText('')
             notify('Email Sender',  f'Email sent successfully to {send_to_email}' )
-        # except:
-        #     notify('Email Sender', 'Unable to send email. Check your internet connection and detials entered.')
+         except:
+             notify('Email Sender', 'Unable to send email. Check your internet connection and detials entered.')
      
 
 def window(): 
@@ -239,4 +226,3 @@ def window():
 if __name__ == "__main__":
     window()
     
-# jasonafterleo
