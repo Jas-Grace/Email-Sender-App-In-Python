@@ -45,7 +45,6 @@ QPushButton {
     background-color: #006325;
     font-size: 20px;
     color: white;
-
     border-radius: 5px;        
     border-width: 1px;
     border-color: #ae32a0;
@@ -173,7 +172,7 @@ class Widgets(QWidget):
         file_path = fname[0]
     
     def onclick(self):
-          try:
+        try:
             global file_path
             email = self.text1.text()
             password = self.text2.text()
@@ -210,7 +209,7 @@ class Widgets(QWidget):
             self.text4.setText('')
             self.text5.insertPlainText('')
             notify('Email Sender',  f'Email sent successfully to {send_to_email}' )
-         except:
+        except:
              notify('Email Sender', 'Unable to send email. Check your internet connection and detials entered.')
      
 
